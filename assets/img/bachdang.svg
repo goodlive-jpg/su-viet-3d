@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Trận Bạch Đằng 938">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#07101c"/>
+      <stop offset=".55" stop-color="#12263a"/>
+      <stop offset="1" stop-color="#274354"/>
+    </linearGradient>
+    <radialGradient id="moon" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fff4d4"/>
+      <stop offset=".65" stop-color="#d9d9c8" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#d9d9c8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d3442"/>
+      <stop offset="1" stop-color="#050b10"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe3a6"/>
+      <stop offset="1" stop-color="#b27c31"/>
+    </linearGradient>
+    <linearGradient id="fire" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#c8452f" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#e98b3d"/>
+      <stop offset="1" stop-color="#ffe1a0"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="12"/></filter>
+  </defs>
+  <rect width="800" height="1000" fill="url(#sky)"/>
+  <circle cx="400" cy="250" r="190" fill="url(#moon)" opacity=".9"/>
+  <circle cx="400" cy="250" r="78" fill="#f5efd7" opacity=".95"/>
+  <circle cx="372" cy="228" r="10" fill="#cfc9b2" opacity=".5"/>
+  <circle cx="424" cy="272" r="7" fill="#cfc9b2" opacity=".5"/>
+  <g fill="#0a1520" opacity=".8">
+    <ellipse cx="180" cy="270" rx="150" ry="16"/><ellipse cx="610" cy="330" rx="160" ry="18"/>
+  </g>
+
+  <path d="M0 560c120-40 260-30 400 0s280 30 400-10v450H0Z" fill="url(#water)"/>
+  <path d="M0 560c120-40 260-30 400 0s280 30 400-10" fill="none" stroke="#8fb0b8" stroke-width="1.5" opacity=".4"/>
+
+  <g stroke="#e8c88d" stroke-width="3" opacity=".25">
+    <path d="M180 720l-30 130m90-130 20 130m160-150-20 150m120-150 30 150m100-170-10 170"/>
+  </g>
+
+  <g>
+    <path d="M250 650 330 610 410 650 330 690Z" fill="#0b0f12" stroke="#c79a55" stroke-width="2"/>
+    <path d="M330 612 330 520l70 40-70 40" fill="#3a1c14" stroke="#c79a55" stroke-width="2"/>
+    <path d="M330 520c30 20 40 50 20 80" fill="none" stroke="#d9a441" stroke-width="2"/>
+    <path d="M300 650c-6 18-8 34-6 50m70-50c6 18 8 34 6 50" stroke="#c79a55" stroke-width="3"/>
+    <path d="M262 700c40 16 96 16 136 0" fill="none" stroke="#7fa3ad" stroke-width="2" opacity=".5"/>
+    <g fill="#1a1210" stroke="#d9a441" stroke-width="1.5">
+      <path d="M330 520v-40l34 18-34 22Z"/>
+    </g>
+  </g>
+
+  <g>
+    <path d="M470 610 560 570 650 610 560 650Z" fill="#0b0f12" stroke="#c79a55" stroke-width="2"/>
+    <path d="M560 572 560 470l80 46-80 56" fill="#40130f" stroke="#c79a55" stroke-width="2"/>
+    <path d="M600 500c24 8 40 26 44 48-22-10-38-24-44-48Z" fill="url(#fire)" opacity=".85"/>
+    <path d="M480 610c-8 18-10 36-8 54m148-54c8 18 10 36 8 54" stroke="#c79a55" stroke-width="3"/>
+    <path d="M472 668c50 18 130 18 180 0" fill="none" stroke="#7fa3ad" stroke-width="2" opacity=".5"/>
+  </g>
+
+  <g fill="#0a0d0f">
+    <path d="M620 760c40-30 90-30 130 0-44 10-88 10-130 0Z" opacity=".7"/>
+  </g>
+
+  <g stroke="#d9a441" stroke-width="5" opacity=".55">
+    <path d="M120 800l70-180M200 820l60-170M300 840l40-170M680 820l-40-180M560 840l-30-170"/>
+  </g>
+  <g fill="none" stroke="#9fc3c9" stroke-width="1.5" opacity=".3">
+    <path d="M120 860c90-18 170-18 250 0s160 18 250 0 160-18 250 0"/>
+    <path d="M60 900c90-18 170-18 250 0s160 18 250 0 160-18 250 0"/>
+    <path d="M140 940c90-18 170-18 250 0s160 18 250 0 160-18 250 0"/>
+  </g>
+
+  <g fill="#0a141a" opacity=".9">
+    <path d="M0 1000c30-100 80-180 160-240-20 90-22 170-10 240Z"/>
+    <path d="M800 1000c-30-100-80-180-160-240 20 90 22 170 10 240Z"/>
+  </g>
+
+  <g fill="#ffe0a0" opacity=".6">
+    <circle cx="150" cy="420" r="1.8"/><circle cx="660" cy="420" r="2.2"/><circle cx="700" cy="500" r="1.4"/><circle cx="100" cy="520" r="1.5"/>
+  </g>
+  <rect width="800" height="1000" fill="none" stroke="#d9a441" stroke-opacity=".2" stroke-width="2"/>
+  <rect x="24" y="24" width="752" height="952" fill="none" stroke="#d9a441" stroke-opacity=".13"/>
+</svg>

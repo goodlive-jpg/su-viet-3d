@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Thành Cổ Loa xoắn ốc">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="80%">
+      <stop offset="0" stop-color="#243a2c"/>
+      <stop offset=".55" stop-color="#111d17"/>
+      <stop offset="1" stop-color="#070b09"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe6aa"/>
+      <stop offset=".6" stop-color="#d3a04a"/>
+      <stop offset="1" stop-color="#8b5c20"/>
+    </linearGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5b6b5c"/>
+      <stop offset="1" stop-color="#232e26"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#e8bd6d" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#e8bd6d" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <ellipse cx="400" cy="480" rx="360" ry="360" fill="url(#halo)" filter="url(#blur)"/>
+  <g opacity=".5" fill="none" stroke="#c9a25c" stroke-width="1.2">
+    <circle cx="400" cy="500" r="330" stroke-dasharray="2 12"/>
+    <circle cx="400" cy="500" r="352" opacity=".4"/>
+  </g>
+
+  <g fill="none" stroke="url(#gold)" stroke-linecap="round">
+    <path d="M400 500c0-30 45-44 70-22 38 33 18 96-36 100-76 6-112-70-78-124 44-70 146-46 160 30 16 90-82 154-166 112-104-52-86-188 26-226 128-44 232 74 202 190" stroke-width="15" opacity=".22"/>
+    <path d="M400 500c0-30 45-44 70-22 38 33 18 96-36 100-76 6-112-70-78-124 44-70 146-46 160 30 16 90-82 154-166 112-104-52-86-188 26-226 128-44 232 74 202 190" stroke-width="6"/>
+    <path d="M400 500c0-30 45-44 70-22 38 33 18 96-36 100-76 6-112-70-78-124 44-70 146-46 160 30 16 90-82 154-166 112-104-52-86-188 26-226 128-44 232 74 202 190" stroke="#f7dca0" stroke-width="1.4" opacity=".8"/>
+    <path d="M445 420c25 22 22 64-9 78-45 20-88-18-78-60 12-50 78-58 108-20 38 50-6 118-64 120" stroke-width="4" opacity=".55"/>
+  </g>
+
+  <g fill="#101a14" stroke="#75907a" stroke-width="1">
+    <rect x="366" y="456" width="68" height="70" rx="4" fill="url(#stone)"/>
+    <path d="M358 456h84l-42-34Z" fill="#3e5042"/>
+    <rect x="388" y="486" width="24" height="40" fill="#0b120d"/>
+    <path d="M366 470h10v10h-10Zm58 0h10v10h-10Z" fill="#e0b264" opacity=".7"/>
+  </g>
+
+  <g stroke="url(#gold)" stroke-width="2.5" opacity=".8">
+    <path d="M210 690l40-22m-40-14 40 22M590 690l-40-22m40-14-40 22M270 790l40-22m-40-14 40 22M530 790l-40-22m40-14-40 22"/>
+  </g>
+  <g fill="#0a100c" opacity=".9">
+    <path d="M60 1000c26-120 82-210 168-270-40 92-52 182-46 270Z"/>
+    <path d="M740 1000c-26-120-82-210-168-270 40 92 52 182 46 270Z"/>
+    <path d="M400 1000c-70-84-108-176-110-276 48 52 84 116 110 176 26-60 62-124 110-176-2 100-40 192-110 276Z" opacity=".7"/>
+  </g>
+  <g fill="#d8ab5c" opacity=".55">
+    <circle cx="180" cy="240" r="2"/><circle cx="620" cy="210" r="2"/><circle cx="680" cy="520" r="1.6"/>
+    <circle cx="140" cy="600" r="1.6"/><circle cx="250" cy="160" r="1.2"/><circle cx="590" cy="760" r="1.8"/>
+  </g>
+  <g fill="none" stroke="#c8452f" stroke-width="3" opacity=".55">
+    <path d="M330 640c90 30 180 30 270 0"/>
+    <path d="M360 656c60 18 120 18 180 0"/>
+  </g>
+  <rect width="800" height="1000" fill="none" stroke="#d9a441" stroke-opacity=".2" stroke-width="2"/>
+  <rect x="24" y="24" width="752" height="952" fill="none" stroke="#d9a441" stroke-opacity=".13"/>
+</svg>

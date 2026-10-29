@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0806">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0806'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23e2b45f' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23c8452f'/%3E%3C/svg%3E">
+<title>Sử Việt 3D — 4.000 năm trong 15 trang</title>
+<meta name="description" content="Slide tương tác 3D về lịch sử Việt Nam: từ Văn Lang, Cổ Loa, Bạch Đằng đến Đổi Mới và hôm nay. Nhấp vào hiện vật để mở hồ sơ chi tiết.">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<canvas id="dust" aria-hidden="true"></canvas>
+<div class="progress" aria-hidden="true"><i id="progress-fill"></i></div>
+
+<header class="chrome">
+  <div class="brand"><span class="mark"></span>SỬ VIỆT <em>/ 3D</em></div>
+  <div class="chrome-right">
+    <span class="chrono"><b>2879 TCN</b> → <b>2026</b></span>
+    <span class="live">Tương tác</span>
+    <span class="counter"><b id="cur-num">01</b> / 15</span>
+    <button type="button" class="ov-btn" data-overview aria-label="Mở tổng quan dòng thời gian"><i><b></b><b></b><b></b><b></b></i><span>Tổng quan</span></button>
+  </div>
+</header>
+
+<nav class="dots" id="dots" aria-label="Điều hướng slide"></nav>
+<div class="hintbar" aria-hidden="true">
+  <span class="desktop-hint">
+    <span class="k"><kbd>←</kbd><kbd>→</kbd></span> di chuyển
+    <span class="sep">·</span>
+    <span class="k"><kbd>Space</kbd></span> trang kế
+    <span class="sep">·</span>
+    <span class="k"><kbd>O</kbd></span> tổng quan
+    <span class="sep">·</span>
+    <span class="tap">Nhấp vào ảnh để mở hồ sơ</span>
+  </span>
+  <span class="touch-hint">Vuốt để chuyển trang · Chạm ảnh để xem chi tiết</span>
+</div>
+
+<main class="deck" id="deck">
+
+  <section class="slide slide--cover is-active" data-title="Mở đầu" aria-label="Mở đầu">
+    <div class="wrap cover-grid">
+      <div class="cover-copy">
+        <p class="kicker reveal" style="--d:.05s">Hành trình 4.000 năm</p>
+        <h1 class="hero reveal" style="--d:.12s">VIỆT<br><span class="grad">NAM</span></h1>
+        <p class="cover-sub reveal" style="--d:.22s">Từ <b>Văn Lang</b> buổi đầu dựng nước đến <b>Việt Nam</b> hôm nay — 14 cột mốc, một dân tộc, một mạch nguồn không ngừng chảy.</p>
+        <div class="pills reveal" style="--d:.32s">
+          <span class="pill"><i></i>15 trang</span>
+          <span class="pill"><i></i>14 thời kỳ</span>
+          <span class="pill"><i></i>Tương tác 3D</span>
+        </div>
+        <div class="cover-cta reveal" style="--d:.4s">
+          <button type="button" class="btn" data-goto="1">Bắt đầu hành trình <span class="arrow">→</span></button>
+          <span class="cover-note">Dùng ← → hoặc Space để đi tiếp. Nhấp vào hiện vật để đọc hồ sơ.</span>
+        </div>
+      </div>
+      <div class="cover-visual reveal" style="--d:.3s" data-parallax>
+        <div class="drum-glow" aria-hidden="true"></div>
+        <div class="orbit" aria-hidden="true"><i></i></div>
+        <div class="orbit o2" aria-hidden="true"><i></i></div>
+        <div class="drum-stage" data-era="1" role="button" tabindex="0" aria-label="Mở hồ sơ Trống đồng Đông Sơn">
+          <div class="drum-wrap">
+            <div class="drum-edge" aria-hidden="true"></div>
+            <div class="drum-face"><img src="assets/img/drum.svg" alt="Mặt trống đồng Đông Sơn"></div>
+            <div class="drum-rim" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="chip chip-a"><span class="chip-dot"></span><b>Văn Lang</b><em>2879 TCN</em></div>
+        <div class="chip chip-b"><b>Bạch Đằng</b><em>938</em></div>
+        <div class="chip chip-c"><b>Đổi Mới</b><em>1986</em></div>
+        <div class="cover-plaque"><span>HÀNH TRÌNH</span><b>2879 TCN — 2026</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era" data-title="Hồng Bàng" aria-label="Hồng Bàng và Văn Lang">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">01 / Hồng Bàng</p>
+          <span class="era-years">2879 – 258 TCN</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Buổi đầu<br><span class="grad">dựng nước</span></h2>
+        <p class="lede reveal" style="--d:.17s">Từ huyền thoại Lạc Long Quân – Âu Cơ đến nhà nước <strong>Văn Lang</strong> của 18 đời Hùng Vương, người Việt cổ dựng nên nền văn minh lúa nước bên sông Hồng.</p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>Nhà nước</b><span>Văn Lang – 15 bộ</span></li>
+          <li><b>Kinh đô</b><span>Phong Châu, Phú Thọ</span></li>
+          <li><b>Kinh tế</b><span>Lúa nước, đúc đồng</span></li>
+          <li><b>Dấu ấn</b><span>Trống đồng Đông Sơn</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="1"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <span class="tap-hint">hoặc <b>nhấp vào ảnh</b></span>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">01</span>
+        <figure class="artifact" data-era="1" role="button" tabindex="0" aria-label="Mở hồ sơ Trống đồng Đông Sơn">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/drum.svg" alt="Minh họa trống đồng Đông Sơn" loading="eager">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Trống đồng Đông Sơn</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">Trống đồng Đông Sơn — <b>nhịp đập của văn minh sông Hồng.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era reverse" data-title="Âu Lạc" aria-label="Âu Lạc và thành Cổ Loa">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">02 / Âu Lạc</p>
+          <span class="era-years">257 – 179 TCN</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Thành Cổ Loa<br><span class="grad">và nỏ thần</span></h2>
+        <p class="lede reveal" style="--d:.17s">Thục Phán hợp nhất Văn Lang với Âu Việt, lập nước <strong>Âu Lạc</strong> và xây thành Cổ Loa — kinh đô xoáy ốc kiên cố bậc nhất thời cổ.</p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>Nhà nước</b><span>Âu Lạc</span></li>
+          <li><b>Kinh đô</b><span>Cổ Loa, Đông Anh</span></li>
+          <li><b>Công trình</b><span>3 vòng thành xoáy</span></li>
+          <li><b>Bi kịch</b><span>Mỵ Châu – Trọng Thủy</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="2"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <span class="tap-hint">hoặc <b>nhấp vào ảnh</b></span>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">02</span>
+        <figure class="artifact" data-era="2" role="button" tabindex="0" aria-label="Mở hồ sơ Thành Cổ Loa">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/coloa.svg" alt="Minh họa thành Cổ Loa xoắn ốc" loading="lazy">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Thành Cổ Loa</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">Cổ Loa — <b>ba vòng thành xoáy ốc bên sông Hoàng Giang.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era" data-title="Hai Bà Trưng" aria-label="Bắc thuộc và khởi nghĩa Hai Bà Trưng">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">03 / Bắc thuộc</p>
+          <span class="era-years">40 – 43 SCN</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Hai Bà Trưng<br><span class="grad">dựng cờ khởi nghĩa</span></h2>
+        <p class="lede reveal" style="--d:.17s">Sau hơn hai thế kỷ Bắc thuộc, cuộc khởi nghĩa Mê Linh của <strong>Trưng Trắc</strong> và <strong>Trưng Nhị</strong> bùng nổ, giải phóng 65 thành trì.</p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>Thời gian</b><span>40 – 43 SCN</span></li>
+          <li><b>Căn cứ</b><span>Mê Linh, Vĩnh Phúc</span></li>
+          <li><b>Thành quả</b><span>Giải phóng 65 thành</span></li>
+          <li><b>Biểu tượng</b><span>Tinh thần nữ nhi bất khuất</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="3"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <span class="tap-hint">hoặc <b>nhấp vào ảnh</b></span>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">03</span>
+        <figure class="artifact" data-era="3" role="button" tabindex="0" aria-label="Mở hồ sơ Hai Bà Trưng">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/trung.svg" alt="Minh họa Hai Bà Trưng cưỡi voi ra trận" loading="lazy">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Hai Bà Trưng</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">Hai Bà Trưng cưỡi voi ra trận — <b>biểu tượng bất diệt của tinh thần độc lập.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era reverse" data-title="Bạch Đằng" aria-label="Ngô Quyền và trận Bạch Đằng 938">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">04 / Độc lập</p>
+          <span class="era-years">938</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Bạch Đằng<br><span class="grad">938</span></h2>
+        <p class="lede reveal" style="--d:.17s">Ngô Quyền dùng cọc gỗ và thủy triều đánh tan quân Nam Hán, <strong>chấm dứt hơn 1.000 năm Bắc thuộc.</strong></p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>Năm</b><span>938</span></li>
+          <li><b>Địa điểm</b><span>Sông Bạch Đằng</span></li>
+          <li><b>Chiến thuật</b><span>Cọc gỗ + thủy triều</span></li>
+          <li><b>Ý nghĩa</b><span>Kết thúc Bắc thuộc</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="4"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <span class="tap-hint">hoặc <b>nhấp vào ảnh</b></span>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">04</span>
+        <figure class="artifact" data-era="4" role="button" tabindex="0" aria-label="Mở hồ sơ Bãi cọc Bạch Đằng">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/bachdang.svg" alt="Minh họa trận Bạch Đằng trên sông" loading="lazy">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Bãi cọc Bạch Đằng</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">Bãi cọc Bạch Đằng — <b>chiến thuật thiên tài làm nên chiến thắng năm 938.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era" data-title="Nhà Lý" aria-label="Nhà Lý và kinh đô Thăng Long">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">05 / Nhà Lý</p>
+          <span class="era-years">1010 – 1225</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Dời đô,<br><span class="grad">mở nền văn hiến</span></h2>
+        <p class="lede reveal" style="--d:.17s">Năm 1010, Lý Thái Tổ dời đô về Đại La, đổi tên <strong>Thăng Long</strong> — mở ra thời kỳ hưng thịnh của văn minh Đại Việt.</p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>Năm 1010</b><span>Chiếu dời đô</span></li>
+          <li><b>Kinh đô</b><span>Thăng Long, Hà Nội</span></li>
+          <li><b>Giáo dục</b><span>Văn Miếu – Quốc Tử Giám</span></li>
+          <li><b>Dấu ấn</b><span>Chùa Một Cột</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="5"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <span class="tap-hint">hoặc <b>nhấp vào ảnh</b></span>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">05</span>
+        <figure class="artifact" data-era="5" role="button" tabindex="0" aria-label="Mở hồ sơ Khuê Văn Các">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/thanglong.svg" alt="Minh họa Khuê Văn Các và rồng thời Lý" loading="lazy">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Khuê Văn Các</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">Khuê Văn Các — <b>biểu tượng của nền giáo dục và văn hiến Thăng Long.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era reverse" data-title="Nhà Trần" aria-label="Nhà Trần và ba lần kháng chiến chống Nguyên Mông">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">06 / Nhà Trần</p>
+          <span class="era-years">1258 – 1288</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Hào khí<br><span class="grad">Đông A</span></h2>
+        <p class="lede reveal" style="--d:.17s">Ba lần đánh bại quân Nguyên Mông, triều Trần khẳng định bản lĩnh của một dân tộc <strong>không chịu khuất phục.</strong></p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>Ba lần</b><span>1258 · 1285 · 1288</span></li>
+          <li><b>Chỉ huy</b><span>Trần Hưng Đạo</span></li>
+          <li><b>Hội nghị</b><span>Diên Hồng, Bình Than</span></li>
+          <li><b>Đỉnh cao</b><span>Bạch Đằng 1288</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="6"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <span class="tap-hint">hoặc <b>nhấp vào ảnh</b></span>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">06</span>
+        <figure class="artifact" data-era="6" role="button" tabindex="0" aria-label="Mở hồ sơ Hào khí Đông A">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/tran.svg" alt="Minh họa cờ nghĩa quân thời Trần" loading="lazy">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Hào khí Đông A</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">Ba lần kháng chiến, một tinh thần: <b>quyết chiến quyết thắng.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era" data-title="Lam Sơn" aria-label="Khởi nghĩa Lam Sơn">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">07 / Lam Sơn</p>
+          <span class="era-years">1418 – 1428</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Mười năm<br><span class="grad">khởi nghĩa Lam Sơn</span></h2>
+        <p class="lede reveal" style="--d:.17s">Từ vùng rừng núi Thanh Hóa, nghĩa quân Lam Sơn đánh đuổi quân Minh, <strong>giành lại độc lập</strong> sau mười năm gian khổ.</p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>Bắt đầu</b><span>1418 tại Lam Sơn</span></li>
+          <li><b>Kéo dài</b><span>10 năm</span></li>
+          <li><b>Chiến thắng</b><span>Chi Lăng – Xương Giang</span></li>
+          <li><b>Văn bản</b><span>Bình Ngô đại cáo</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="7"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <span class="tap-hint">hoặc <b>nhấp vào ảnh</b></span>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">07</span>
+        <figure class="artifact" data-era="7" role="button" tabindex="0" aria-label="Mở hồ sơ Gươm thần Lam Sơn">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/lamsong.svg" alt="Minh họa gươm thần và hồ Hoàn Kiếm" loading="lazy">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Gươm thần Lam Sơn</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">Gươm thần và hồ Hoàn Kiếm — <b>huyền thoại về chính nghĩa và hòa bình.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era reverse" data-title="Tây Sơn" aria-label="Tây Sơn và Quang Trung">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">08 / Tây Sơn</p>
+          <span class="era-years">1771 – 1792</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Quang Trung<br><span class="grad">đại phá quân Thanh</span></h2>
+        <p class="lede reveal" style="--d:.17s">Từ khởi nghĩa nông dân, anh em Tây Sơn thống nhất đất nước và làm nên <strong>chiến thắng thần tốc</strong> mùa xuân 1789.</p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>Khởi nghĩa</b><span>1771</span></li>
+          <li><b>Rạch Gầm – Xoài Mút</b><span>1785</span></li>
+          <li><b>Ngọc Hồi – Đống Đa</b><span>1789</span></li>
+          <li><b>Hoàng đế</b><span>Quang Trung – Nguyễn Huệ</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="8"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <span class="tap-hint">hoặc <b>nhấp vào ảnh</b></span>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">08</span>
+        <figure class="artifact" data-era="8" role="button" tabindex="0" aria-label="Mở hồ sơ Quang Trung">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/tayson.svg" alt="Minh họa Quang Trung trên lưng voi" loading="lazy">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Quang Trung</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">Mùa xuân Kỷ Dậu 1789 — <b>chiến thắng thần tốc Ngọc Hồi – Đống Đa.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era" data-title="Nhà Nguyễn" aria-label="Nhà Nguyễn và kinh thành Huế">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">09 / Nhà Nguyễn</p>
+          <span class="era-years">1802 – 1945</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Kinh thành Huế<br><span class="grad">và triều Nguyễn</span></h2>
+        <p class="lede reveal" style="--d:.17s">Gia Long thống nhất đất nước, đặt kinh đô tại Huế; triều Nguyễn để lại <strong>quần thể cung đình đồ sộ</strong> bên sông Hương.</p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>Năm 1802</b><span>Gia Long lập nhà Nguyễn</span></li>
+          <li><b>Kinh đô</b><span>Phú Xuân – Huế</span></li>
+          <li><b>Quốc hiệu</b><span>Việt Nam, 1804</span></li>
+          <li><b>Di sản</b><span>Cố đô Huế</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="9"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <span class="tap-hint">hoặc <b>nhấp vào ảnh</b></span>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">09</span>
+        <figure class="artifact" data-era="9" role="button" tabindex="0" aria-label="Mở hồ sơ Ngọ Môn">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/hue.svg" alt="Minh họa Ngọ Môn và kinh thành Huế" loading="lazy">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Ngọ Môn</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">Ngọ Môn — <b>cổng chính của Hoàng thành Huế, di sản thế giới.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era reverse" data-title="Pháp thuộc" aria-label="Thời Pháp thuộc và phong trào yêu nước">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">10 / Pháp thuộc</p>
+          <span class="era-years">1858 – 1945</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Đêm dài nô lệ<br><span class="grad">và những ngọn lửa</span></h2>
+        <p class="lede reveal" style="--d:.17s">Gần một thế kỷ thuộc địa, nhưng <strong>chưa bao giờ phong trào yêu nước ngừng cháy.</strong></p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>1858</b><span>Pháp nổ súng Đà Nẵng</span></li>
+          <li><b>1885 – 1896</b><span>Phong trào Cần Vương</span></li>
+          <li><b>1930</b><span>Thành lập Đảng</span></li>
+          <li><b>1941</b><span>Mặt trận Việt Minh</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="10"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <span class="tap-hint">hoặc <b>nhấp vào ảnh</b></span>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">10</span>
+        <figure class="artifact" data-era="10" role="button" tabindex="0" aria-label="Mở hồ sơ Ngọn lửa Cần Vương">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/phapthuoc.svg" alt="Minh họa thời Pháp thuộc và phong trào yêu nước" loading="lazy">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Ngọn lửa Cần Vương</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">Những ngọn lửa Cần Vương — <b>ý chí không chịu làm nô lệ.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era" data-title="1945" aria-label="Cách mạng tháng Tám và Quốc khánh 1945">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">11 / 1945</p>
+          <span class="era-years">Cách mạng tháng Tám</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Mùa thu<br><span class="grad">độc lập</span></h2>
+        <p class="lede reveal" style="--d:.17s">Cách mạng tháng Tám thành công; ngày 2/9/1945, Chủ tịch Hồ Chí Minh đọc <strong>Tuyên ngôn độc lập</strong> tại Quảng trường Ba Đình.</p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>19/8/1945</b><span>Khởi nghĩa Hà Nội</span></li>
+          <li><b>2/9/1945</b><span>Tuyên ngôn độc lập</span></li>
+          <li><b>Địa điểm</b><span>Quảng trường Ba Đình</span></li>
+          <li><b>Tên nước</b><span>Việt Nam Dân chủ Cộng hòa</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="11"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <span class="tap-hint">hoặc <b>nhấp vào ảnh</b></span>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">11</span>
+        <figure class="artifact" data-era="11" role="button" tabindex="0" aria-label="Mở hồ sơ Quảng trường Ba Đình 1945">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/cachmang.svg" alt="Minh họa Quảng trường Ba Đình ngày 2/9/1945" loading="lazy">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Ba Đình 1945</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">Quảng trường Ba Đình, 2/9/1945 — <b>khoảnh khắc khai sinh nước Việt Nam mới.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era reverse" data-title="1954 – 1975" aria-label="Từ Điện Biên Phủ 1954 đến thống nhất 1975">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">12 / 1954 – 1975</p>
+          <span class="era-years">Kháng chiến &amp; thống nhất</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Từ Điện Biên Phủ<br><span class="grad">đến mùa xuân đại thắng</span></h2>
+        <p class="lede reveal" style="--d:.17s">Chiến thắng Điện Biên Phủ lừng lẫy năm châu, rồi cuộc tổng tiến công mùa xuân 1975 <strong>thống nhất non sông.</strong></p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>7/5/1954</b><span>Điện Biên Phủ</span></li>
+          <li><b>21/7/1954</b><span>Hiệp định Genève</span></li>
+          <li><b>30/4/1975</b><span>Giải phóng miền Nam</span></li>
+          <li><b>1976</b><span>Nước CHXHCN Việt Nam</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="12"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <span class="tap-hint">hoặc <b>nhấp vào ảnh</b></span>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">12</span>
+        <figure class="artifact" data-era="12" role="button" tabindex="0" aria-label="Mở hồ sơ Dinh Độc Lập 1975">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/thongnhat.svg" alt="Minh họa xe tăng tiến vào Dinh Độc Lập" loading="lazy">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Dinh Độc Lập</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">30/4/1975 — <b>non sông thu về một mối.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era" data-title="Đổi Mới" aria-label="Công cuộc Đổi Mới 1986">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">13 / Đổi Mới</p>
+          <span class="era-years">1986</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Đổi Mới —<br><span class="grad">mở cửa và cất cánh</span></h2>
+        <p class="lede reveal" style="--d:.17s">Đại hội VI tháng 12/1986 khởi xướng công cuộc Đổi Mới, đưa Việt Nam bước vào <strong>kinh tế thị trường và hội nhập.</strong></p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>12/1986</b><span>Đại hội VI</span></li>
+          <li><b>Chủ trương</b><span>Kinh tế thị trường</span></li>
+          <li><b>1995</b><span>Gia nhập ASEAN</span></li>
+          <li><b>2007</b><span>Gia nhập WTO</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="13"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <span class="tap-hint">hoặc <b>nhấp vào ảnh</b></span>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">13</span>
+        <figure class="artifact" data-era="13" role="button" tabindex="0" aria-label="Mở hồ sơ Cánh cửa Đổi Mới">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/doimoi.svg" alt="Minh họa cánh cửa Đổi Mới mở ra" loading="lazy">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Cánh cửa Đổi Mới</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">Cánh cửa Đổi Mới — <b>từ bao cấp đến kinh tế thị trường và hội nhập.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide--era reverse" data-title="Hôm nay" aria-label="Việt Nam hôm nay và tương lai">
+    <div class="wrap era-grid">
+      <div class="era-copy">
+        <div class="era-head reveal" style="--d:.05s">
+          <p class="kicker">14 / Hôm nay</p>
+          <span class="era-years">1986 – 2026</span>
+        </div>
+        <h2 class="title reveal" style="--d:.1s">Việt Nam<br><span class="grad">hôm nay &amp; ngày mai</span></h2>
+        <p class="lede reveal" style="--d:.17s">Hơn 100 triệu dân, nền kinh tế năng động, 8 di sản thế giới — Việt Nam đang <strong>viết tiếp trang sử của mình.</strong></p>
+        <ul class="facts reveal" style="--d:.25s">
+          <li><b>Dân số</b><span>Hơn 100 triệu người</span></li>
+          <li><b>Di sản UNESCO</b><span>8 di sản thế giới</span></li>
+          <li><b>Diện tích</b><span>Hơn 331.000 km²</span></li>
+          <li><b>Khát vọng</b><span>Thịnh vượng, hội nhập</span></li>
+        </ul>
+        <div class="era-cta reveal" style="--d:.33s">
+          <button type="button" class="detail-btn" data-era="14"><span class="db-icon"><i></i></span><span>Mở hồ sơ hiện vật</span><span class="arr">↗</span></button>
+          <button type="button" class="detail-btn" data-goto="0"><span>Xem lại từ đầu</span><span class="arr">↺</span></button>
+        </div>
+      </div>
+      <div class="era-visual reveal" style="--d:.2s" data-parallax>
+        <span class="era-ghost" aria-hidden="true">14</span>
+        <figure class="artifact" data-era="14" role="button" tabindex="0" aria-label="Mở hồ sơ Việt Nam hôm nay">
+          <span class="a-back" aria-hidden="true"></span>
+          <div class="a-plate">
+            <img src="assets/img/hiennay.svg" alt="Minh họa đô thị Việt Nam hiện đại" loading="lazy">
+            <span class="a-sheen" aria-hidden="true"></span>
+          </div>
+          <span class="a-frame" aria-hidden="true"></span>
+          <span class="a-year">Việt Nam hôm nay</span>
+          <span class="a-open">Chi tiết <i>↗</i></span>
+          <span class="a-corner tl" aria-hidden="true"></span><span class="a-corner tr" aria-hidden="true"></span>
+          <span class="a-corner bl" aria-hidden="true"></span><span class="a-corner br" aria-hidden="true"></span>
+        </figure>
+        <div class="art-cap">Một dân tộc đi qua 4.000 năm — <b>đang hướng tới tương lai.</b></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <div class="m-visual">
+      <img id="m-img" src="assets/img/drum.svg" alt="">
+      <span class="m-badge" id="m-badge">Khởi nguyên</span>
+      <span class="m-rings" aria-hidden="true"></span>
+    </div>
+    <div class="m-body">
+      <p class="m-kicker" id="m-kicker">Hồ sơ 01</p>
+      <h3 class="m-title" id="m-title">Buổi đầu dựng nước</h3>
+      <p class="m-period" id="m-period">2879 – 258 TCN</p>
+      <p class="m-lead" id="m-lead"></p>
+      <div class="m-bodytext" id="m-bodytext"></div>
+      <div class="m-facts" id="m-facts"></div>
+      <blockquote id="m-quote"></blockquote>
+      <div class="m-nav">
+        <button type="button" id="m-prev">← Thời kỳ trước</button>
+        <button type="button" id="m-next">Thời kỳ sau →</button>
+        <button type="button" id="m-goto">Tới trang này</button>
+      </div>
+    </div>
+    <button type="button" class="m-close" id="m-close" aria-label="Đóng hồ sơ">×</button>
+  </div>
+</div>
+
+<div class="overview" id="overview" aria-hidden="true">
+  <div class="overview-bg" data-close-overview></div>
+  <div class="ov-inner" role="dialog" aria-modal="true" aria-label="Tổng quan dòng thời gian">
+    <div class="ov-head">
+      <div>
+        <p>Dòng thời gian</p>
+        <h3>4.000 năm trong một màn hình</h3>
+        <span>Chọn một thời kỳ để đi tới · Nhấn O hoặc Esc để đóng</span>
+      </div>
+      <button type="button" class="ov-close" data-close-overview>Đóng ×</button>
+    </div>
+    <div class="ov-grid" id="ov-grid"></div>
+  </div>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

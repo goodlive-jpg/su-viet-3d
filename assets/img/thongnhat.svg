@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Từ Điện Biên Phủ 1954 đến thống nhất 1975">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c1620"/>
+      <stop offset=".45" stop-color="#3a2a28"/>
+      <stop offset=".7" stop-color="#a64b2f"/>
+      <stop offset="1" stop-color="#e8b46a"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffe8b0"/>
+      <stop offset="1" stop-color="#ffce82" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d84b2c"/>
+      <stop offset="1" stop-color="#842014"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe7ad"/>
+      <stop offset="1" stop-color="#b97d2c"/>
+    </linearGradient>
+    <linearGradient id="tank" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a5546"/>
+      <stop offset="1" stop-color="#1c221b"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="12"/></filter>
+  </defs>
+  <rect width="800" height="1000" fill="url(#sky)"/>
+  <circle cx="400" cy="360" r="230" fill="url(#sun)" opacity=".55" filter="url(#blur)"/>
+  <circle cx="400" cy="360" r="66" fill="#ffdaa0" opacity=".55"/>
+
+  <path d="M0 560 90 430 160 490 250 380 330 480 420 400 520 490 610 410 700 480 800 430V660H0Z" fill="#2a1712" opacity=".85"/>
+  <path d="M0 620c120-26 240-16 360 10s260 26 440-10v380H0Z" fill="#140c0a"/>
+
+  <g transform="translate(0 60)">
+    <g>
+      <path d="M230 520V340" stroke="#d9a441" stroke-width="7"/>
+      <path d="M230 350c44 8 70 32 78 68-30-16-56-18-78-8Z" fill="url(#red)" stroke="#e0b25e" stroke-width="2"/>
+      <path d="M230 350c-44 8-70 32-78 68 30-16 56-18 78-8Z" fill="#b5321e" stroke="#e0b25e" stroke-width="2"/>
+      <path d="M230 340l-12-28h24Z" fill="#d9a441"/>
+    </g>
+
+    <g transform="translate(0 10)">
+      <path d="M270 760h340v-60H270Z" fill="#1a1f19"/>
+      <path d="M300 700h280v-40H300Z" fill="#2a3026"/>
+      <rect x="370" y="640" width="140" height="60" rx="8" fill="#333b2e"/>
+      <path d="M390 640v-30h100v30" fill="none" stroke="#4a5546" stroke-width="10"/>
+      <rect x="500" y="640" width="10" height="46" fill="#4a5546"/>
+      <g fill="#12160f">
+        <circle cx="330" cy="766" r="34"/><circle cx="420" cy="766" r="34"/><circle cx="510" cy="766" r="34"/><circle cx="580" cy="766" r="34"/>
+      </g>
+      <g fill="#5b6654">
+        <circle cx="330" cy="766" r="14"/><circle cx="420" cy="766" r="14"/><circle cx="510" cy="766" r="14"/><circle cx="580" cy="766" r="14"/>
+      </g>
+      <path d="M610 700h34v30h-34Z" fill="#333b2e"/>
+    </g>
+
+    <g>
+      <path d="M120 780V560" stroke="#c9a25c" stroke-width="8"/>
+      <path d="M120 570c56 10 90 40 100 84-38-20-70-22-100-10Z" fill="#c43a25" stroke="#e0b25e" stroke-width="2"/>
+      <path d="M120 570c-56 10-90 40-100 84 38-20 70-22 100-10Z" fill="#a92c1c" stroke="#e0b25e" stroke-width="2"/>
+    </g>
+  </g>
+
+  <g fill="#0d0806" opacity=".95">
+    <path d="M0 900c100-30 200-30 300 0s200 30 300 0 150-20 200-6v106H0Z"/>
+  </g>
+  <g fill="#e8b46a" opacity=".55">
+    <circle cx="160" cy="440" r="1.8"/><circle cx="650" cy="430" r="2"/><circle cx="700" cy="540" r="1.4"/><circle cx="100" cy="550" r="1.4"/>
+  </g>
+  <g fill="#f6e2bc" opacity=".75">
+    <path d="M140 330c7-7 14-7 21 0-4-1-7 0-10 3-3-3-6-4-11-3Zm-7-2c3-5 8-6 12-3-2 1-3 3-4 6-3-2-5-3-8-3Z"/>
+    <path d="M640 320c7-7 14-7 21 0-4-1-7 0-10 3-3-3-6-4-11-3Zm-7-2c3-5 8-6 12-3-2 1-3 3-4 6-3-2-5-3-8-3Z"/>
+  </g>
+  <rect width="800" height="1000" fill="none" stroke="#d9a441" stroke-opacity=".2" stroke-width="2"/>
+  <rect x="24" y="24" width="752" height="952" fill="none" stroke="#d9a441" stroke-opacity=".13"/>
+</svg>
